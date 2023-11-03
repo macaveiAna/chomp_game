@@ -44,8 +44,13 @@ impl Board {
     }
 
     // Chomp a given square, removing all squares below it and to the right of it
-    pub fn chomp_effect(board: &Board) {
-
+    // where width represents the rows and height represents the column
+    pub fn chomp_effect(board: &Board, row:usize, col:usize) {
+        for i in 0..row {
+            for j in 0..col {
+                
+            }
+        }
 
     }
 
