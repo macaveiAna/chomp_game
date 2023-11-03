@@ -44,13 +44,15 @@ impl Board {
     }
 
     // Chomp a given square, removing all squares below it and to the right of it
-    pub fn chomp_effect() {}
+    pub fn chomp_effect(board: &Board) {
 
-    // This function clones the board
-    pub fn clone_board() {}
+
+    }
 
     // The negamax algorithm solves any zero-sum perfect-information
     // two-player game (like Chomp). It takes as input a board state and
     // outputs a winning move, if one exists.
-    pub fn negamax(/*grid: Vec<Vec<bool>>*/) {}
+    pub fn negamax(/*grid: Vec<Vec<bool>>*/) {
+        //call self.clone() here 
+    }
 }
