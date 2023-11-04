@@ -10,6 +10,8 @@ fn main() {
 
     let width:usize= input!("Enter a width: ").trim().parse().unwrap();
     let height:usize=input!("Enter a height: ").trim().parse().unwrap();
+
+    // Repeat the board here using while loop
     // Testing to see if I can create the board successfully
     let mut board = Board::create_board(width, height); 
     Board::display_board(&board);

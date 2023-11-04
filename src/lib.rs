@@ -56,8 +56,18 @@ impl Board {
     // The negamax algorithm solves any zero-sum perfect-information
     // two-player game (like Chomp). It takes as input a board state and
     // outputs a winning move, if one exists.
-    pub fn negamax(/*grid: Vec<Vec<bool>>*/) {
+    pub fn negamax(board:&mut Board, row:usize, col:usize) {
         //call self.clone() here
+        // for each remaining row r
+        for r in row..board.height {
+            for c in col..board.width{
+                //if r = 0 && c = 0 {
+                    //continue;
+                //}
+                //let new_board = clone();
+            }
+        }
+
     }
 }
 
