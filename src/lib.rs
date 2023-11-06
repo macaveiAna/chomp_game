@@ -18,11 +18,11 @@ pub struct Board {
 // Board type should support the following operations via impl
 impl Board {
     pub fn create_board(width: usize, height: usize) -> Self {
+        // if user gives invalid input, simply ask again until they give valid input
         // Initialize the board to true because it would be false if eaten.
-
         let grid = [[true; MAX_WIDTH]; MAX_HEIGHT];
 
-        Self {
+        Board {
             grid,
             width,
             height,
@@ -45,13 +45,19 @@ impl Board {
 
     // Chomp a given square, removing all squares below it and to the right of it
     // where width represents the rows and height represents the column
-    pub fn chomp_effect(&mut self, row: usize, col: usize) {
-        // Loop through setting the users x's to false aka eaten
-        for i in row..self.height {
-            for j in col..self.width {
+    pub fn chomp_effect(&mut self, row:usize, col:usize){
+        //if user gives an invalid input, ask again until they give valid
+        //input. give out of bounds error for row: <= 3 col: <=4
+        for i in row..self.height{
+            for j in col..self.width{
                 self.grid[i][j] = false;
             }
         }
+        // define the game over. That's if the user selects 0, 0
+        /*if(i == 0 && j == 0){
+            println!("You lose!")
+        }*/
+        
     }
 
     // The negamax algorithm solves any zero-sum perfect-information
@@ -66,18 +72,21 @@ impl Board {
                 if r == 0 && c == 0 {
                     continue;
                 }
+                // Check if r and c is true
+                if self.grid[r][c] == true {
+                    let mut new_board = self.clone();
 
-                let mut new_board = self.clone();
-                new_board.chomp_effect(r, c);
-                let possible_move = new_board.negamax();
-                if possible_move == None{
-                    return Some((r,c));
+                    new_board.chomp_effect(r, c);
+                    let possible_move = new_board.negamax();
+                    if possible_move == None {
+                        return Some((r, c));
                     }
                 }
             }
-            return None;    
         }
+        return None;
     }
+}
 
 #[test]
 fn test_create_board() {}
