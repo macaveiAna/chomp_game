@@ -21,32 +21,41 @@ use prompted::input;
 fn main() {
     println!("First, let's create the board!");
 
-    let width: usize = input!("Enter a width: ").trim().parse().unwrap();
-    let height: usize = input!("Enter a height: ").trim().parse().unwrap();
+    // + Add a condition here where if user enters a width > 5 and height > 4, asks user to try again
+    let mut width: usize = input!("Enter a width: ").trim().parse().unwrap();
+    let mut height: usize = input!("Enter a height: ").trim().parse().unwrap();
+    loop {
+        if width > 5 && height > 4 {
+            println!("Out of bounds! Enter a board that has a width <= 5 and a height <= 4.");
+            width: usize = input!("Enter a width: ").trim().parse().unwrap();
+            height: usize = input!("Enter a height: ").trim().parse().unwrap();
+        }
+    }
 
     // Testing to see if I can create the board successfully
     let mut board = Board::create_board(width, height);
     Board::display_board(&board);
 
-    // Repeat the board here using while loop AND while loop exits when encountering a
+    // Repeat the board here using a loop AND loop exits when encountering a
     // (0,0) then it's game over. (create a game over function)
     loop {
         // Ask user to chomp using prompted input method
         let mut col: usize = input!("Enter the column: ").trim().parse().unwrap();
         let mut row: usize = input!("Enter the row: ").trim().parse().unwrap();
 
-        // give out of bounds error if user enters row: <= 3 col: <=4
-        if row == 4 && col == 5 {
-            println!("Out of bounds, Please enter a row < 3 and a column < 4");
-            // have user re-enter input!
-            col = input!("Enter the column: ").trim().parse().unwrap();
-            row = input!("Enter the row: ").trim().parse().unwrap();
-        }
-
-        // if user inputs (0,0) then its game over
-        if row == 0 && col == 0 {
-            println!("Game Over!");
-            break;
+        loop {
+            // give out of bounds error if user enters row: <= 3 col: <=4 or row = 0 col = 0
+            if row == 4 && col == 5 || row == 0 && col == 0 {
+                println!("Out of bounds! Please enter a row < 3 and a column < 4");
+                // have user re-enter input!
+                col = input!("Enter the column: ").trim().parse().unwrap();
+                row = input!("Enter the row: ").trim().parse().unwrap();
+            }
+            // if user inputs (0,0) then its game over
+            if row == 0 && col == 0 {
+                println!("Game Over!");
+                break;
+            }
         }
 
         Board::chomp_effect(&mut board, row, col);
