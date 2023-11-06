@@ -57,9 +57,45 @@ impl Board {
     // (You can implement this by chomping the furthest-right piece in
     // the lowermost nonempty row.) 
     // AI is finding a move so I wouldn't take in a row and a column
-    pub fn chomp_stall (&mut self) {
-        
+    pub fn chomp_stall (&self) -> (usize, usize){
+        for i in 0..self.height {
+            for j in 0..self.width{
+                // check here for rightmost square and nothing underneath
+                /*match self.grid.get((i,j)) {
+                    // increment one row to the right to check if its false or if its None (out of bounds)
+                    if index(i,j) == true {
+                        if i+1 == None || i+1 == false {
+                            if j+1 == None || j+1 == false{
+                                return (i,j)
+                        }
+                    }*/
+                    if grid[i][j] != true {
+                        continue;
+                    }
+                    if let Some(true)= grid.get((i+1,j)){
+                        continue;
+                    }
+                    //do the same thing with the square to the right.
+
+                    //after that check just return 
+
+                        
+
+                    }
+                }
+
+
+                }
+                //if(index(i,j) == None && index(i,j) == false){
+                    //i += 1; //increment the row to the right
+
+                }
+
+
+        }
+        todo!()
     }
+
 
     // The negamax algorithm solves any zero-sum perfect-information
     // two-player game (like Chomp). It takes as input a board state and

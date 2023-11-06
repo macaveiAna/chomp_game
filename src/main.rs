@@ -9,10 +9,10 @@
 //! the lowermost nonempty row.) Might need to create a function
 //!
 //! Update the README.md using markdown
-//! 
+//!
 //! ?Ask nicolas about if user knows that it starts at index 0 or 1
 //! ?Do you want AI to go first or user to go first. In this case we just call the negamax function first.
-//! 
+//!
 //! I plan to add if the user wants to play again after game over.
 
 use chomp_game::Board;
@@ -62,8 +62,8 @@ fn main() {
         println!(" ");
         Board::display_board(&board);
         //use "match" because the ai is not moving if there is no winning move
-        
-       /* 
+
+        /*
             if let Some(winning_move) = Board::negamax(&board){
             // catch winning move and chomp it
             Board::chomp_effect(&mut board, winning_move.0, winning_move.1);
@@ -77,14 +77,9 @@ fn main() {
                 // Force AI to make a move even if it will lose
                 // call function that takes the lower most square
                 // test a 4x4 board that eats (1,1)
-                
-                
-                
             }
         }
         println!(" ");
         Board::display_board(&board);
     }
 }
-
-
