@@ -61,11 +61,30 @@ fn main() {
         Board::chomp_effect(&mut board, row, col);
         println!(" ");
         Board::display_board(&board);
-        if let Some(winning_move) = Board::negamax(&board) {
+        //use "match" because the ai is not moving if there is no winning move
+        
+       /* 
+            if let Some(winning_move) = Board::negamax(&board){
             // catch winning move and chomp it
             Board::chomp_effect(&mut board, winning_move.0, winning_move.1);
+        }*/
+        match Board::negamax(&board) {
+            Some(winning_move) => {
+                // Catch winning move and chomp it
+                board.chomp_effect(winning_move.0, winning_move.1);
+            }
+            None => {
+                // Force AI to make a move even if it will lose
+                // call function that takes the lower most square
+                // test a 4x4 board that eats (1,1)
+                
+                
+                
+            }
         }
         println!(" ");
         Board::display_board(&board);
     }
 }
+
+

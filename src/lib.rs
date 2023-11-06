@@ -46,13 +46,19 @@ impl Board {
     // Chomp a given square, removing all squares below it and to the right of it
     // where width represents the rows and height represents the column
     pub fn chomp_effect(&mut self, row: usize, col: usize) {
-        //if user gives an invalid input, ask again until they give valid
-        //input. give out of bounds error for row: <= 3 col: <=4
         for i in row..self.height {
             for j in col..self.width {
                 self.grid[i][j] = false;
             }
         }
+    }
+
+    // If there is no winning move stall by chomping as little as possible.
+    // (You can implement this by chomping the furthest-right piece in
+    // the lowermost nonempty row.) 
+    // AI is finding a move so I wouldn't take in a row and a column
+    pub fn chomp_stall (&mut self) {
+        
     }
 
     // The negamax algorithm solves any zero-sum perfect-information
@@ -82,7 +88,7 @@ impl Board {
         return None;
     }
 }
-
+/* 
 #[test]
 fn test_create_board() {}
 
@@ -90,3 +96,5 @@ fn test_chomp_effect() {}
 
 fn test_negamax() {}
  
+*/
+
