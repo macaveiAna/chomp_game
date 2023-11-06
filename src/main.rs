@@ -32,10 +32,23 @@ fn main() {
     // (0,0) then it's game over. (create a game over function)
     loop {
         // Ask user to chomp using prompted input method
-        let row: usize = input!("Enter the row: ").trim().parse().unwrap();
-        let col: usize = input!("Enter the column: ").trim().parse().unwrap();
+        let mut col: usize = input!("Enter the column: ").trim().parse().unwrap();
+        let mut row: usize = input!("Enter the row: ").trim().parse().unwrap();
 
-        // give out of bounds error for row: <= 3 col: <=4
+        // give out of bounds error if user enters row: <= 3 col: <=4
+        if row == 4 && col == 5 {
+            println!("Out of bounds, Please enter a row < 3 and a column < 4");
+            // have user re-enter input!
+            col = input!("Enter the column: ").trim().parse().unwrap();
+            row = input!("Enter the row: ").trim().parse().unwrap();
+        }
+
+        // if user inputs (0,0) then its game over
+        if row == 0 && col == 0 {
+            println!("Game Over!");
+            break;
+        }
+
         Board::chomp_effect(&mut board, row, col);
         Board::display_board(&board);
         if let Some(winning_move) = Board::negamax(&board) {

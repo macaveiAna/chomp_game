@@ -86,10 +86,11 @@ impl Board {
         return None;
     }
 }
-
+/*
 #[test]
 fn test_create_board() {}
 
 fn test_chomp_effect() {}
 
 fn test_negamax() {}
+ */
