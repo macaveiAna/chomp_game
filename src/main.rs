@@ -32,8 +32,9 @@ fn main() {
         }
         // Testing to see if I can create the board successfully
         let mut board = Board::create_board(width, height);
+        println!(" ");
         Board::display_board(&board);
-    }
+   // }
 
     // Repeat the board here using a loop AND loop exits when encountering a
     // (0,0) then it's game over. (create a game over function)
@@ -42,7 +43,7 @@ fn main() {
     let mut col: usize = input!("Enter the column: ").trim().parse().unwrap();
     let mut row: usize = input!("Enter the row: ").trim().parse().unwrap();
 
-    loop {
+    //loop {
         // give out of bounds error if user enters row: <= 3 col: <=4 or row = 0 col = 0
         if row == 4 && col == 5 || row == 0 && col == 0 {
             println!("Out of bounds! Please enter a row < 3 and a column < 4");
@@ -55,14 +56,17 @@ fn main() {
             println!("Game Over!");
             break;
         }
-    }
+    //}
 
     Board::chomp_effect(&mut board, row, col);
+    println!(" ");
     Board::display_board(&board);
     if let Some(winning_move) = Board::negamax(&board) {
         // catch winning move and chomp it
         Board::chomp_effect(&mut board, winning_move.0, winning_move.1);
     }
+    println!(" ");
     Board::display_board(&board);
     //}
+    }
 }
