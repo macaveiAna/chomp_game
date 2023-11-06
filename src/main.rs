@@ -27,8 +27,8 @@ fn main() {
     loop {
         if width > 5 && height > 4 {
             println!("Out of bounds! Enter a board that has a width <= 5 and a height <= 4.");
-            width: usize = input!("Enter a width: ").trim().parse().unwrap();
-            height: usize = input!("Enter a height: ").trim().parse().unwrap();
+            width = input!("Enter a width: ").trim().parse().unwrap();
+            height = input!("Enter a height: ").trim().parse().unwrap();
         }
     }
 
