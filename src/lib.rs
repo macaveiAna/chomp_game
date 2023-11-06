@@ -45,11 +45,11 @@ impl Board {
 
     // Chomp a given square, removing all squares below it and to the right of it
     // where width represents the rows and height represents the column
-    pub fn chomp_effect(&mut self, row:usize, col:usize){
+    pub fn chomp_effect(&mut self, row: usize, col: usize) {
         //if user gives an invalid input, ask again until they give valid
         //input. give out of bounds error for row: <= 3 col: <=4
-        for i in row..self.height{
-            for j in col..self.width{
+        for i in row..self.height {
+            for j in col..self.width {
                 self.grid[i][j] = false;
             }
         }
@@ -57,7 +57,6 @@ impl Board {
         /*if(i == 0 && j == 0){
             println!("You lose!")
         }*/
-        
     }
 
     // The negamax algorithm solves any zero-sum perfect-information
