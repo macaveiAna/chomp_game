@@ -53,10 +53,6 @@ impl Board {
                 self.grid[i][j] = false;
             }
         }
-        // define the game over. That's if the user selects 0, 0
-        /*if(i == 0 && j == 0){
-            println!("You lose!")
-        }*/
     }
 
     // The negamax algorithm solves any zero-sum perfect-information

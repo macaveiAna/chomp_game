@@ -6,17 +6,14 @@
 //! Try to find a winning move. If there is one, perform it.
 //! Otherwise, stall by chomping as little as possible.
 //! (You can implement this by chomping the furthest-right piece in
-//!  the lowermost nonempty row.) Might need to create a function
-//!
-//! add invalid input for create_board and chomp_effect (lib.rs)
-//!
-//! create a game over function (lib.rs)
-//!
-//! Add while loop with the exit condition being the game over function (main)
+//! the lowermost nonempty row.) Might need to create a function
 //!
 //! Update the README.md using markdown
 //! 
 //! ?Ask nicolas about if user knows that it starts at index 0 or 1
+//! ?Do you want AI to go first or user to go first. In this case we just call the negamax function first.
+//! 
+//! I plan to add if the user wants to play again after game over.
 
 use chomp_game::Board;
 use prompted::input;
