@@ -2,6 +2,8 @@
 //!
 //! Ana Macavei 2023
 
+
+
 //global constants
 const MAX_WIDTH: usize = 5;
 const MAX_HEIGHT: usize = 4;
@@ -57,7 +59,22 @@ impl Board {
     // (You can implement this by chomping the furthest-right piece in
     // the lowermost nonempty row.) 
     // AI is finding a move so I wouldn't take in a row and a column
-    pub fn chomp_stall (&self) -> (usize, usize){
+    pub fn chomp_stall (&mut self) {
+        
+        
+        'outside:for i in (0..self.height).rev() {
+            for j in (0..self.width).rev(){
+                if self.grid[i][j] == true {
+                    self.grid[i][j] = false;
+                    break 'outside;
+                }
+
+            }
+        }
+
+       /*let row;
+        let col;
+
         for i in 0..self.height {
             for j in 0..self.width{
                 // check here for rightmost square and nothing underneath
@@ -69,33 +86,31 @@ impl Board {
                                 return (i,j)
                         }
                     }*/
-                    if grid[i][j] != true {
+                    if self.grid[i][j] != true {
                         continue;
                     }
-                    if let Some(true)= grid.get((i+1,j)){
+                    if self.grid[i+1][j] == false {
                         continue;
                     }
                     //do the same thing with the square to the right.
-
-                    //after that check just return 
-
-                        
-
+                    if self.grid[i][j+1] == false {
+                        continue;
                     }
-                }
+
+                    row = i;
+                    col = j;
 
 
-                }
-                //if(index(i,j) == None && index(i,j) == false){
-                    //i += 1; //increment the row to the right
 
-                }
-
-
+                    //after that check just return
+                    return (row, col); 
+            }
+          
         }
-        todo!()
+        return(row, col);*/
     }
-
+             
+            
 
     // The negamax algorithm solves any zero-sum perfect-information
     // two-player game (like Chomp). It takes as input a board state and

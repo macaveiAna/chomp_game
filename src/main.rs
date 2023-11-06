@@ -77,6 +77,7 @@ fn main() {
                 // Force AI to make a move even if it will lose
                 // call function that takes the lower most square
                 // test a 4x4 board that eats (1,1)
+                board.chomp_stall();
             }
         }
         println!(" ");
