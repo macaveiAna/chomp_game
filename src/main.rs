@@ -3,16 +3,10 @@
 //! Ana Macavei 2023
 //!
 //! TO DO:
-//! Try to find a winning move. If there is one, perform it.
-//! Otherwise, stall by chomping as little as possible.
-//! (You can implement this by chomping the furthest-right piece in
-//! the lowermost nonempty row.) Might need to create a function
 //!
-//! Update the README.md using markdown
-//! 
 //! if the ai loses, display "you win"
 //!
-//! I plan to add if the user wants to play again after game over.
+
 
 use chomp_game::Board;
 use prompted::input;
@@ -59,6 +53,7 @@ fn main() {
         // add a condition here if the user enters r=0 and c=0 then it's game over
         Board::chomp_effect(&mut board, row, col);
         println!(" ");
+        println!("Your Move:");
         Board::display_board(&board);
         //use "match" because the ai is not moving if there is no winning move
 
@@ -80,6 +75,7 @@ fn main() {
             }
         }
         println!(" ");
+        println!("AI Move:");
         Board::display_board(&board);
     }
 }

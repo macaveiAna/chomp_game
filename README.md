@@ -46,6 +46,17 @@ some reason the function was not stalling by removing the right most available s
 `'outer` feature in Rust that allows you to break out of a specific outer loop from an inner loop. The label `'outer` can be any valid Rust 
 identifier.
 
+One of the winning moves I used for testing is building a 4x4
+then enter: 
+(row, col)
+(1,1)
+(0,3)
+(0,2)
+(1,0)
+
+
+
+
 
 ## Testing
 

@@ -2,8 +2,6 @@
 //!
 //! Ana Macavei 2023
 
-
-
 //global constants
 const MAX_WIDTH: usize = 5;
 const MAX_HEIGHT: usize = 4;
@@ -55,25 +53,21 @@ impl Board {
         }
     }
 
-    // If there is no winning move stall by chomping as little as possible.
-    // (You can implement this by chomping the furthest-right piece in
-    // the lowermost nonempty row.) 
-    // AI is finding a move so I wouldn't take in a row and a column
-    pub fn chomp_stall (&mut self) {    
-        //
-        //use rev() method to start at the rightmost square
-        //used 'outer 
-        'outer:for i in (0..self.height).rev() {
-            for j in (0..self.width).rev(){
-                if self.grid[i][j] == true {
+    // If there is no winning move, stall by chomping as little as possible.
+    // This is implemented by chomping the furthest-right piece in
+    // the lowermost nonempty row
+    pub fn chomp_stall(&mut self) {
+        // use rev() method to start at the rightmost square.
+        'outer: for i in (0..self.height).rev() {
+            for j in (0..self.width).rev() {
+                if self.grid[i][j] { 
                     self.grid[i][j] = false;
+                    // breaking out of the entire loop structure using 'outer
                     break 'outer;
                 }
             }
         }
     }
-             
-            
 
     // The negamax algorithm solves any zero-sum perfect-information
     // two-player game (like Chomp). It takes as input a board state and
@@ -87,22 +81,22 @@ impl Board {
                 if r == 0 && c == 0 {
                     continue;
                 }
-                // Check if r and c is true
-                if self.grid[r][c] == true {
+                // Check if r and c is true 
+                if self.grid[r][c] {
                     let mut new_board = self.clone();
 
                     new_board.chomp_effect(r, c);
                     let possible_move = new_board.negamax();
-                    if possible_move == None {
+                    if possible_move.is_none() {
                         return Some((r, c));
                     }
                 }
             }
         }
-        return None;
+        None
     }
 }
-/* 
+/*
 #[test]
 fn test_create_board() {}
 
@@ -111,8 +105,7 @@ fn test_chomp_effect() {}
 fn test_negamax() {}
 
 fn test_chomp_stall(){
-    
-}
- 
-*/
 
+}
+
+*/
