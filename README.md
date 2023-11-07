@@ -54,10 +54,6 @@ then enter:
 (0,2)
 (1,0)
 
-
-
-
-
 ## Testing
 
 The program includes a number of unit tests to ensure that the game logic is correct. To run the unit tests, simply run the following command:

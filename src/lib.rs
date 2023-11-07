@@ -60,7 +60,7 @@ impl Board {
         // use rev() method to start at the rightmost square.
         'outer: for i in (0..self.height).rev() {
             for j in (0..self.width).rev() {
-                if self.grid[i][j] { 
+                if self.grid[i][j] {
                     self.grid[i][j] = false;
                     // breaking out of the entire loop structure using 'outer
                     break 'outer;
@@ -81,7 +81,7 @@ impl Board {
                 if r == 0 && c == 0 {
                     continue;
                 }
-                // Check if r and c is true 
+                // Check if r and c is true
                 if self.grid[r][c] {
                     let mut new_board = self.clone();
 
@@ -96,16 +96,39 @@ impl Board {
         None
     }
 }
-/*
-#[test]
-fn test_create_board() {}
 
-fn test_chomp_effect() {}
+#[cfg(test)]
+mod test {
+    use super::*;
+    #[test]
+    fn test_create_board() {
+        // test to make sure the board isn't greater than 5x4
+        let board = Board::create_board(5, 4);
+        assert!(board.width <= MAX_WIDTH);
+        assert!(board.height <= MAX_HEIGHT);
 
-fn test_negamax() {}
+        let board_two = Board::create_board(4, 3);
+        assert!(board_two.width <= MAX_WIDTH);
+        assert!(board_two.height <= MAX_HEIGHT);
 
-fn test_chomp_stall(){
+        let board_three = Board::create_board(3, 2);
+        assert!(board_three.width <= MAX_WIDTH);
+        assert!(board_three.height <= MAX_HEIGHT);
+    }
 
+    #[test]
+    fn test_chomp_effect() {
+        let mut board = Board::create_board(5, 4);
+        board.chomp_effect(3, 4);
+        assert_eq!(board.grid[3][4], false);
+    }
+
+    #[test]
+    fn test_negamax() {
+        // Picking a specific case to test.
+        let mut board = Board::create_board(5, 4);
+        board.chomp_effect(0, 1);
+        let winning_move = board.negamax();
+        assert_eq!(winning_move, Some((1, 0)));
+    }
 }
-
-*/

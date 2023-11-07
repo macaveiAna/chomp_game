@@ -2,11 +2,6 @@
 //!
 //! Ana Macavei 2023
 //!
-//! TO DO:
-//!
-//! if the ai loses, display "you win"
-//!
-
 
 use chomp_game::Board;
 use prompted::input;
