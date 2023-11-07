@@ -9,9 +9,8 @@
 //! the lowermost nonempty row.) Might need to create a function
 //!
 //! Update the README.md using markdown
-//!
-//! ?Ask nicolas about if user knows that it starts at index 0 or 1
-//! ?Do you want AI to go first or user to go first. In this case we just call the negamax function first.
+//! 
+//! if the ai loses, display "you win"
 //!
 //! I plan to add if the user wants to play again after game over.
 

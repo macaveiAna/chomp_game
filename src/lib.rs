@@ -59,55 +59,18 @@ impl Board {
     // (You can implement this by chomping the furthest-right piece in
     // the lowermost nonempty row.) 
     // AI is finding a move so I wouldn't take in a row and a column
-    pub fn chomp_stall (&mut self) {
-        
-        
-        'outside:for i in (0..self.height).rev() {
+    pub fn chomp_stall (&mut self) {    
+        //
+        //use rev() method to start at the rightmost square
+        //used 'outer 
+        'outer:for i in (0..self.height).rev() {
             for j in (0..self.width).rev(){
                 if self.grid[i][j] == true {
                     self.grid[i][j] = false;
-                    break 'outside;
+                    break 'outer;
                 }
-
             }
         }
-
-       /*let row;
-        let col;
-
-        for i in 0..self.height {
-            for j in 0..self.width{
-                // check here for rightmost square and nothing underneath
-                /*match self.grid.get((i,j)) {
-                    // increment one row to the right to check if its false or if its None (out of bounds)
-                    if index(i,j) == true {
-                        if i+1 == None || i+1 == false {
-                            if j+1 == None || j+1 == false{
-                                return (i,j)
-                        }
-                    }*/
-                    if self.grid[i][j] != true {
-                        continue;
-                    }
-                    if self.grid[i+1][j] == false {
-                        continue;
-                    }
-                    //do the same thing with the square to the right.
-                    if self.grid[i][j+1] == false {
-                        continue;
-                    }
-
-                    row = i;
-                    col = j;
-
-
-
-                    //after that check just return
-                    return (row, col); 
-            }
-          
-        }
-        return(row, col);*/
     }
              
             
@@ -146,6 +109,10 @@ fn test_create_board() {}
 fn test_chomp_effect() {}
 
 fn test_negamax() {}
+
+fn test_chomp_stall(){
+    
+}
  
 */
 

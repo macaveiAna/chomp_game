@@ -38,8 +38,13 @@ I ran into this issue when writing the negamax function:
 I added a lot of user friendliness when it came to playing the game - I thought this also made it much easier to test my inputs so that I wouldn't 
 have to rerun the game each time
 
-In main I needed to make the ai make a move even if it realizes that there is no way for it to win.
-
+In main I needed to make the ai make a move even if it realizes that there is no way for it to win. So I went ahead and created a function to stall
+the moves and I think this was the function I had the most difficulty with because I had a very hard time wrapping my head around how to navigate
+to the right-most square on the grid. I decided to look to see if rust had some kind of reverse function. I found that the rev() method pretty
+helpful with this since it's a method that will pretty much allow me to start at the rightmost square. And then I got really stuck because for 
+some reason the function was not stalling by removing the right most available square. That's when I had my friend pooja remind me about the 
+`'outer` feature in Rust that allows you to break out of a specific outer loop from an inner loop. The label `'outer` can be any valid Rust 
+identifier.
 
 
 ## Testing
